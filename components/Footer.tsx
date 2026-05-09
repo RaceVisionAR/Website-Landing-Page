@@ -1,7 +1,22 @@
-const links = {
-  Product: ["Features", "How It Works", "Demo", "Pricing"],
-  Company: ["About Us", "Careers", "Press", "Contact"],
-  Resources: ["Documentation", "Support", "Privacy Policy", "Terms of Service"],
+const links: Record<string, { label: string; href: string }[]> = {
+  Product: [
+    { label: "Features", href: "#features" },
+    { label: "How It Works", href: "#how-it-works" },
+    { label: "Demo", href: "#see-it-in-action" },
+    { label: "Pricing", href: "#" },
+  ],
+  Company: [
+    { label: "About Us", href: "#about" },
+    { label: "Careers", href: "#" },
+    { label: "Press", href: "#" },
+    { label: "Contact", href: "mailto:Contact@RaceVisionAR.com" },
+  ],
+  Resources: [
+    { label: "Documentation", href: "#" },
+    { label: "Support", href: "mailto:Contact@RaceVisionAR.com" },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+  ],
 };
 
 const socialIcons = [
@@ -42,9 +57,12 @@ export default function Footer() {
               </div>
               <span className="font-bold text-white text-lg">Race Vision AR</span>
             </div>
-            <p className="text-sm leading-relaxed mb-4">
+            <p className="text-sm leading-relaxed mb-2">
               Transforming race day into an interactive AR experience for fans worldwide.
             </p>
+            <a href="mailto:Contact@RaceVisionAR.com" className="text-sm text-purple-400 hover:text-purple-300 transition-colors mb-4 inline-block">
+              Contact@RaceVisionAR.com
+            </a>
             <div className="flex gap-3">
               {socialIcons.map(({ key, svg }) => (
                 <a key={key} href="#" className="w-8 h-8 rounded-full bg-gray-800 hover:bg-purple-600 flex items-center justify-center transition-colors text-gray-300">
@@ -61,9 +79,9 @@ export default function Footer() {
                 <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide">{category}</h4>
                 <ul className="space-y-2">
                   {items.map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-sm hover:text-purple-400 transition-colors">
-                        {item}
+                    <li key={item.label}>
+                      <a href={item.href} className="text-sm hover:text-purple-400 transition-colors">
+                        {item.label}
                       </a>
                     </li>
                   ))}
@@ -86,6 +104,9 @@ export default function Footer() {
             <p className="text-sm leading-relaxed">
               Transforming race day into an interactive AR experience for fans worldwide.
             </p>
+            <a href="mailto:Contact@RaceVisionAR.com" className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
+              Contact@RaceVisionAR.com
+            </a>
             <div className="flex gap-3 pt-2">
               {socialIcons.map(({ key, svg }) => (
                 <a key={key} href="#" className="w-8 h-8 rounded-full bg-gray-800 hover:bg-purple-600 flex items-center justify-center transition-colors text-gray-300">
@@ -101,9 +122,9 @@ export default function Footer() {
               <h4 className="text-white font-semibold mb-4">{category}</h4>
               <ul className="space-y-2">
                 {items.map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-sm hover:text-purple-400 transition-colors">
-                      {item}
+                  <li key={item.label}>
+                    <a href={item.href} className="text-sm hover:text-purple-400 transition-colors">
+                      {item.label}
                     </a>
                   </li>
                 ))}
